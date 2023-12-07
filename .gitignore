@@ -1,0 +1,33 @@
+# Logs
+frontend-agenda/logs
+frontend-agenda/*.log
+frontend-agenda/npm-debug.log*
+frontend-agenda/yarn-debug.log*
+frontend-agenda/yarn-error.log*
+frontend-agenda/pnpm-debug.log*
+frontend-agenda/lerna-debug.log*
+
+frontend-agenda/node_modules
+frontend-agenda/.DS_Store
+frontend-agenda/dist
+frontend-agenda/dist-ssr
+frontend-agenda/coverage
+frontend-agenda/*.local
+
+frontend-agenda/cypress/videos/
+frontend-agenda/cypress/screenshots/
+
+# Editor directories and files
+frontend-agenda/.vscode/*
+!frontend-agenda/.vscode/extensions.json
+frontend-agenda/.idea
+frontend-agenda/*.suo
+frontend-agenda/*.ntvs*
+frontend-agenda/*.njsproj
+frontend-agenda/*.sln
+frontend-agenda/*.sw?
+
+venv
+app/__pycache__
+app/migrations/
+app/instance/database.db
