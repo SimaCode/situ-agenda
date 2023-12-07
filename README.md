@@ -15,6 +15,6 @@ Este es mi proyecto de agenda de citas.
 
 1. Inicia el backend con `python app/app.py`.
 
-2. En otra terminal, inicia el frontend con `cd frontend-agenda && npm run dev`.
+2. En otra terminal, inicia el frontend con `cd front-agenda && npm run dev`.
 
 Ahora puedes acceder a la aplicación en el puerto que indica la consola
