@@ -8,6 +8,8 @@ Este es mi proyecto de agenda de citas.
 2. Navega al directorio del proyecto con `cd situ-agenda`.
 
 3.Instala las dependencias del backend con `pip install -r app/requirements.txt`.
+- Se sugiere crear un entorno virtual para instalar las dependencias de Python para   
+  evitar posibles conflictos entre dependendencias
 
 4. Instala las dependencias del frontend con `cd frontend-agenda && npm install`.
 
