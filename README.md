@@ -19,4 +19,4 @@ Este es mi proyecto de agenda de citas.
 
 2. En otra terminal, inicia el frontend con `cd front-agenda && npm run dev`.
 
-Ahora puedes acceder a la aplicación en el puerto que indica la consola
+Ahora puedes acceder a la aplicación en la URL que indica la consola del Front
