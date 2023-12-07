@@ -13,7 +13,7 @@ Este es mi proyecto de agenda de citas.
 
 ## Ejecución
 
-1. Inicia el backend con `python app/main.py`.
+1. Inicia el backend con `python app/app.py`.
 
 2. En otra terminal, inicia el frontend con `cd frontend-agenda && npm run dev`.
 
