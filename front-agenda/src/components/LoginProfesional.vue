@@ -7,7 +7,7 @@
             <label for="password">Password:</label>
             <input type="password" id="password" v-model="password" required>
             <button type="submit">Iniciar sesión</button>
-            <p>No tienes cuenta? <RouterLink to="/register-profesional">Registrate</RouterLink></p>
+            <p class = text-center>No tienes cuenta? <RouterLink to="/register-profesional">Registrate</RouterLink></p>
         </form>
     </div>
 </template>

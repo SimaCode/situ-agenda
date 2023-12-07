@@ -1,10 +1,11 @@
 <script setup>
 import LoginPaciente from '../components/LoginPaciente.vue';
+import { useRouter } from 'vue-router';
 </script>
 
 <template>
-  
   <main>
+    <router-link to="/" class="back-button">Volver</router-link>
     <h1>Inicia sesión - Paciente</h1>
     <LoginPaciente/>
   </main>
@@ -19,6 +20,18 @@ main {
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
+    position: relative;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #404040;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
 }
 
 h1 {

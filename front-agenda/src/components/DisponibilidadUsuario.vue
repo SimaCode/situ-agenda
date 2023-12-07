@@ -1,7 +1,8 @@
 <template>
     <div class="disponibilidad-container">
         <h4>Revisa tus horarios y observa la información de tus citas agendadas</h4>
-       <div class="table-container">
+        <p>Los pacientes podrán ver tus horarios disponibles y agendar citas</p>
+       <div class="table-container mt-5">
         <table class="disponibilidad-table">
             <thead>
                 <tr>

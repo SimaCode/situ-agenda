@@ -13,7 +13,7 @@
             <input type="text" id="especialidad" v-model="especialidad" required>
             <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
             <button type="submit">Registrarse</button>
-            <p>Ya tienes una cuenta? <RouterLink to="/login-profesional">Inicia sesión</RouterLink></p>
+            <p class="texto-center mt-4">Ya tienes una cuenta? <RouterLink to="/login-profesional">Inicia sesión</RouterLink></p>
         </form>
     </div>
 </template>

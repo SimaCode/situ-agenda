@@ -1,7 +1,8 @@
 <template>
     <div class="disponibilidad-creador-container">
         <h4>Añade nuevos horarios disponibles a tu agenda</h4>
-        <form @submit.prevent="submitForm" class="disponibilidad-creador-form">
+        <p>Selecciona una fecha, hora de inicio y hora de fin donde podrías atender a un paciente</p>
+        <form @submit.prevent="submitForm" class="disponibilidad-creador-form mt-5">
             <label for="fecha">Fecha:</label>
             <input type="date" id="fecha" v-model="fecha" required>
             <label for="hora">Hora inicio:</label>
