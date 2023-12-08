@@ -1,5 +1,8 @@
 <template>
-    <div class="login-container">
+    <transition name="fade">
+        <div v-if="flashMessage" class="flash-message">{{ flashMessage }}</div>
+    </transition>
+    <div class="login-container mt-5">
         <h1>Bienvenido</h1>
         <form @submit.prevent="login" class="login-form">
             <label for="email">Email:</label>
@@ -15,28 +18,38 @@
 
 <script>
 import axios from 'axios';
-    export default {
-        data() {
-            return {
-                email: '',
-                password: ''
-            }
-        },
-        methods: {
-            login(){
-                axios.post('login', {
-                    email: this.email,
-                    password: this.password
-                }).then(response => {
-                    console.log(response)
-                    this.$router.push({name: 'paciente-home'})
-                }).catch(error => {
-                    console.log(error)
-                })
-            }
-            
+export default {
+    data() {
+        return {
+            email: '',
+            password: '',
+            flashMessage: null
         }
+    },
+    watch: {
+        '$route': 'checkFlashMessage'
+    },
+    methods: {
+        checkFlashMessage() {
+            this.flashMessage = localStorage.getItem('flashMessage');
+            localStorage.removeItem('flashMessage');
+        },
+        login(){
+            axios.post('login', {
+                email: this.email,
+                password: this.password
+            }).then(response => {
+                console.log(response)
+                this.$router.push({name: 'paciente-home'})
+            }).catch(error => {
+                console.log(error)
+            })
+        }
+    },
+    created() {
+        this.checkFlashMessage();
     }
+}
 </script>
 
 <style scoped>
@@ -93,6 +106,28 @@ h1 {
 .login-form p {
     margin-top: 20px;
     font-size: 0.9em;
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+.flash-message {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border: 1px solid #007BFF;
+    background-color: #D1E7FE;
+    color: #007BFF;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+}
+
+.flash-message:before {
+    content: '✔';
+    margin-right: 10px;
 }
 
 @media (min-width: 600px) {
