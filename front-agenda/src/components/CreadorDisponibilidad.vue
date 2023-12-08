@@ -12,31 +12,14 @@
             <button type="submit">Crear</button>
         </form>
     </div>
+    <div class="container">
+        <transition name="fade">
+            <div v-if="flashVisible" class="flash-message">{{ flashMessage }}</div>
+        </transition>
+    </div>
 </template>
 
-<!-- <template>
-    <v-container class="disponibilidad-creador-container">
-      <v-card class="pa-4">
-        <v-card-title>Crea una Disponibilidad</v-card-title>
-        <v-card-text>
-          <v-form @submit.prevent="submitForm">
-            <v-row>
-              <v-col cols="6">
-                <v-date-picker v-model="fecha" label="Fecha" required></v-date-picker>
-              </v-col>
-              <v-col cols="6">
-                <label for="hora">Hora inicio:</label>
-                <input type="time" id="hora_inicio" v-model="hora_inicio" required>
-                <label for="hora">Hora fin:</label>
-                <input type="time" id="hora_fin" v-model="hora_fin" required>
-              </v-col>
-            </v-row>
-            <v-btn type="submit" color="primary">Crear</v-btn>
-          </v-form>
-        </v-card-text>
-      </v-card>
-    </v-container>
-  </template> -->
+
 
 <script>
 import axios from 'axios';
@@ -48,7 +31,9 @@ export default {
       fecha: new Date(),
       hora_inicio: '',
       hora_fin: '',
-      estado: ''
+      estado: '',
+      flashMessage: null,
+      flashVisible: false
     }
     },
     methods: {
@@ -64,6 +49,13 @@ export default {
     // Agrega la nueva disponibilidad a la tienda
     store.addDisponibilidad(response.data);
     store.fetchDisponibilidades();
+
+    // Muestra el mensaje flash
+    this.flashMessage = 'La disponibilidad ha sido creada correctamente.';
+    this.flashVisible = true;
+    setTimeout(() => {
+        this.flashVisible = false;
+    }, 5000); // 
   })
   .catch(error => {
     console.log(error);
@@ -119,5 +111,29 @@ h4 {
 
 .disponibilidad-creador-form button:hover {
     background-color: #248cfb;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.flash-message {
+    padding: 5px 10px;
+    margin: 10px auto;
+    border: 1px solid #007BFF;
+    background-color: #D1E7FE;
+    color: #007BFF;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: inline-flex;
+    align-items: center;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.flash-message:before {
+    content: '✔';
+    margin-right: 5px;
+    font-size: 1.2em;
 }
 </style>

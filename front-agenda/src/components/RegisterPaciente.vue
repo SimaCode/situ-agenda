@@ -13,6 +13,8 @@
             <input type="email" id="email" v-model="email" required>
             <label for="password">Password:</label>
             <input type="password" id="passwordr" v-model="password" required>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" v-model="confirmPassword" required>
             <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
             <button type="submit">Registrarse</button>
             <p class="text-center mt-4">Ya tienes una cuenta? <RouterLink to="/login-paciente">Inicia sesión</RouterLink></p>
@@ -33,35 +35,43 @@ import axios from 'axios';
                 email: '',
                 password: '',
                 role: 'paciente',
-                errorMessage: ''
+                errorMessage: '',
+                confirmPassword: ''
             }
         },
         methods: {
     register() {
-        axios.post('/register', {
-            name: this.nombre,
-            last_name: this.apellido,
-            comuna: this.comuna,
-            direccion: this.direccion,
-            email: this.email,
-            password: this.password,
-            role: this.role,
-        })
-        .then(response => {
-            console.log(response.data.message);
-            this.$router.push({name: 'login-paciente'})
-
-            
-        })
-        .catch(error => {
-            if (error.response.status === 400) {
-                this.errorMessage = error.response.data.message;
-                console.log(error.response.data.message);
-                // Aquí puedes mostrar un mensaje de error al usuario
-            } else {
-                console.log('Ocurrió un error inesperado');
-            }
-        });
+        if(this.password !== this.confirmPassword){
+                    alert('Las contraseñas no coinciden');
+                    return;
+                }
+                axios.post('/register', {
+                    name: this.nombre,
+                    last_name: this.apellido,
+                    comuna: this.comuna,
+                    direccion: this.direccion,
+                    email: this.email,
+                    password: this.password,
+                    role: this.role,
+                })
+                .then(response => {
+                    return new Promise((resolve, reject) => {
+                        localStorage.setItem('flashMessage', 'Tu cuenta ha sido creada correctamente. Por favor inicia sesión.');
+                        resolve();
+                    });
+                })
+                .then(() => {
+                    this.$router.push('/login-paciente');
+                })
+                .catch(error => {
+                    if (error.response.status === 400) {
+                        this.errorMessage = error.response.data.message;
+                        console.log(error.response.data.message);
+                        // Aquí puedes mostrar un mensaje de error al usuario
+                    } else {
+                        console.log('Ocurrió un error inesperado');
+                    }
+                });
     }
 }
     }

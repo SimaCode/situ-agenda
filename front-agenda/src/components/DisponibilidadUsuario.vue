@@ -65,8 +65,10 @@ export default {
     },
     methods: {
     eliminarDisponibilidad(id) {
-        const store = useStore();
-        store.deleteDisponibilidad(id);
+        if (confirm('¿Estás seguro de que quieres eliminar esta disponibilidad?')) {
+            const store = useStore();
+            store.deleteDisponibilidad(id);
+        }
     },
     async verInfo(disponibilidad) {
         try {

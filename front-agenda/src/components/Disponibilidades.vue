@@ -68,9 +68,10 @@ export default {
             id_profesional: idProfesional,
             id_disponibilidad: idDisponibilidad,
           });
-          const disponibilidadesResponse = await axios.get('/disponibilidad');
-          this.disponibilidades = disponibilidadesResponse.data.disponibilidades;
+          const response = await axios.get('/disponibilidad');
+          this.disponibilidades = response.data.disponibilidades;
           this.filteredDisponibilidades = this.disponibilidades;
+          this.filterDisponibilidades(); 
         } catch (error) {
           console.log(error);
         }

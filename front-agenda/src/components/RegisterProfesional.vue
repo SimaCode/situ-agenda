@@ -5,12 +5,14 @@
             <input type="text" id="nombre" v-model="nombre" required>
             <label for="apellido">Apellido:</label>
             <input type="text" id="apellido" v-model="apellido" required>
+            <label for="especialidad">Especialidad:</label>
+            <input type="text" id="especialidad" v-model="especialidad" required>
             <label for="email">Email:</label>
             <input type="email" id="email" v-model="email" required>
             <label for="password">Password:</label>
-            <input type="password" id="passwordr" v-model="password" required>
-            <label for="especialidad">Especialidad:</label>
-            <input type="text" id="especialidad" v-model="especialidad" required>
+            <input type="password" id="password" v-model="password" required>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" v-model="confirmPassword" required>
             <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
             <button type="submit">Registrarse</button>
             <p class="texto-center mt-4">Ya tienes una cuenta? <RouterLink to="/login-profesional">Inicia sesión</RouterLink></p>
@@ -30,11 +32,16 @@ import axios from 'axios';
                 password: '',
                 role: 'profesional',
                 especialidad: '',
-                errorMessage: ''
+                errorMessage: '',
+                confirmPassword: ''
             }
         },
         methods: {
     register() {
+        if(this.password !== this.confirmPassword){
+                    alert('Las contraseñas no coinciden');
+                    return;
+                }
         axios.post('/register', {
             name: this.nombre,
             last_name: this.apellido,
@@ -44,10 +51,13 @@ import axios from 'axios';
             especialidad: this.especialidad
         })
         .then(response => {
-            console.log(response.data.message);
-            this.$router.push({name: 'login-profesional'})
-
-            
+            return new Promise((resolve, reject) => {
+                localStorage.setItem('flashMessage', 'Tu cuenta ha sido creada correctamente. Por favor inicia sesión.');
+                resolve();
+            });
+        })
+        .then(() => {
+            this.$router.push('/login-paciente');
         })
         .catch(error => {
             if (error.response.status === 400) {

@@ -1,4 +1,7 @@
 <template>
+    <transition name="fade">
+        <div v-if="flashMessage" class="flash-message">{{ flashMessage }}</div>
+    </transition>
     <div class="login-container">
         <h1>Bienvenido</h1>
         <form @submit.prevent="login" class="login-form">
@@ -19,10 +22,19 @@ import axios from 'axios';
         data() {
             return {
                 email: '',
-                password: ''
+                password: '',
+                confirmPassword: '',
+                flashMessage: null
             }
         },
+        watch: {
+        '$route': 'checkFlashMessage'
+        },
         methods: {
+            checkFlashMessage() {
+                this.flashMessage = localStorage.getItem('flashMessage');
+                localStorage.removeItem('flashMessage');
+            },
             login(){
                 axios.post('login', {
                     email: this.email,
@@ -35,6 +47,9 @@ import axios from 'axios';
                 })
             }
             
+        },
+        created() {
+            this.checkFlashMessage();
         }
     }
 </script>
@@ -93,6 +108,29 @@ h1 {
 .login-form p {
     margin-top: 20px;
     font-size: 0.9em;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+.flash-message {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border: 1px solid #007BFF;
+    background-color: #D1E7FE;
+    color: #007BFF;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+}
+
+.flash-message:before {
+    content: '✔';
+    margin-right: 10px;
 }
 
 @media (min-width: 600px) {
