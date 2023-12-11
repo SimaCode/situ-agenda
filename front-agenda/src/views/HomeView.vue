@@ -39,6 +39,7 @@ const logout = async () => {
 .v-main {
     padding: 20px;
     margin-top: 64px;
+
 }
 
 .v-toolbar-title {
@@ -49,10 +50,6 @@ const logout = async () => {
 .v-btn {
     font-size: 12px;
     color: white;
-}
-
-.v-main {
-    padding: 20px;
 }
 
 .v-main h1 {

@@ -31,3 +31,7 @@ venv
 app/__pycache__
 app/migrations/
 app/instance/database.db
+
+docker-compose.yml
+app/Dockerfile
+front-agenda/Dockerfile

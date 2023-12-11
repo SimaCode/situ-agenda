@@ -8,6 +8,8 @@ import App from './App.vue'
 import router from './router'
 
 // Vuetify
+
+// Vuetify
 import 'vuetify/styles'
 import 'vuetify/dist/vuetify.min.css'
 import { createVuetify } from 'vuetify'
@@ -28,5 +30,6 @@ const vuetify = createVuetify({
 })
 
 app.use(vuetify)
+
 
 app.mount('#app')
