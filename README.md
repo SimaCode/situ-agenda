@@ -20,4 +20,6 @@ Este es mi proyecto de agenda de citas.
 2. En otra terminal, inicia el frontend con `cd front-agenda && npm run dev`.
 
 Ahora puedes acceder a la aplicación en la URL que indica la consola del Front.
-PD: En la rama "Avances" del repo, agregue algunos cambios y añadi el uso de Docker para facilitar la ejecuión de la app.
+PD: En la rama "Avances" del repo, agregue algunos cambios para mejorar ciertas vistas y acciones
+para clonar esa rama
+git clone -b Avances https://github.com/SimaCode/situ-agenda.git`.
