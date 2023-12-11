@@ -7,6 +7,7 @@ import LoginPacienteView from '../views/LoginPacienteView.vue'
 import HomePacienteView from '../views/HomePacienteView.vue'
 import RegisterPacienteView from '../views/RegisterPacienteView.vue'
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -45,7 +46,7 @@ const router = createRouter({
       path: '/paciente-home',
       name: 'paciente-home',
       component: HomePacienteView
-    },
+    },    
   ]
 })
 
