@@ -11,7 +11,7 @@ Este es mi proyecto de agenda de citas.
 - Se sugiere crear un entorno virtual para instalar las dependencias de Python para   
   evitar posibles conflictos entre dependendencias
 
-4. Instala las dependencias del frontend con `cd frontend-agenda && npm install`.
+4. Instala las dependencias del frontend con `cd front-agenda && npm install`.
 
 ## Ejecución
 
